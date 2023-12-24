@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--学习页面-->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人信息</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/study.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/timers.js}"></script>
+    <script th:src="@{/js/study.js}"></script>
+</head>
+
+<body>
+    <div class="header" th:replace="/index::header">
+        <a href="index.html" class="logo">
+            <h1>Logo</h1>
+        </a>
+        <nav class="navbar">
+            <ul>
+                <!-- <li><a class="first" href="#">首页</a></li> -->
+
+                <li><a class="next" href="courseindex.html">回到课程首页</a></li>
+                <li><a class="next" href="index.html">回到首页</a></li>
+                <li><a class="next" href="../admin/login.html">退出登录</a></li>
+
+            </ul>
+        </nav>
+    </div>
+    <div class="view">
+        <text>视频播放/演示视频</text>
+        <div id="classId" th:text="${classId}" ></div>
+        <div id="show" style="width: 180px;height: 50px;color: brown;font-size: 15px;"></div>
+    </div>
+
+    <div class="scontext">
+        <video width="100%"  th:src="@{|/video/${classId}/${filename}|}" controls="controls"></video>
+    </div>
+
+</body>
+
+</html>

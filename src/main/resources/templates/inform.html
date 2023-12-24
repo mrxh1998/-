@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课堂通知</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/courseindex.css}">
+    <link rel="stylesheet" th:href="@{/css/inform.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/inform.js}"></script>
+
+</head>
+
+<body>
+    <div class="header" th:replace="/index::header">
+        <a href="index.html" class="logo">
+            <h1>Logo</h1>
+        </a>
+        <nav class="navbar">
+            <ul>
+                <!-- <li><a class="first" href="#">首页</a></li> -->
+                <li><a class="next" href="mycourse.html">回到我的课堂</a></li>
+                <li><a class="next" href="index.html">回到首页</a></li>
+
+                <li><a class="next" href="../admin/login.html">退出登录</a></li>
+
+            </ul>
+        </nav>
+    </div>
+    <div class="view">
+        <text>首页/我的课堂/课堂通知</text>
+    </div>
+    <form class="putout" method="post" th:action="@{|/inform/${classId}|}"  th:if="${loginUser!=null && loginUser.userType == 2}">
+        <textarea id="area" cols="60" rows="7" name="context"></textarea>
+        <input type="submit" value="发布通知">
+    </form>
+    <div class="top"  th:replace="/courseindex::top">
+        <center>
+            <ul>
+                <li><a href="#"><b>主页</b></a></li>
+                <li><a class="active" href="#" id="messages">通知</a></li>
+                <li><a href="#" id="homework">作业</a></li>
+                <li><a href="#" id="grade">成绩</a></li>
+                <li><a href="#" id="evaluate">评价</a></li>
+                <li><a href="#" id="studycondition">班级学习情况</a></li>
+                <li><a href="#" id="sign">学业预警</a></li>
+            </ul>
+        </center>
+    </div>
+    <h2>单击查看通知内容
+    </h2>
+
+
+
+    <div class="infomain">
+        <ul th:each="message:${messages}">
+            <li><a href="#" class="info" th:text="${message}">关于本学期第1次上课的安排</a></li>
+        </ul>
+
+    </div>
+
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        var username = window.localStorage.getItem("uname");
+        var userpad = window.localStorage.getItem("pword");
+        $("#messages").click(function() {
+            window.localStorage.setItem("tname", "huang");
+            $("#messages").attr("href", "/student/messages?username=" + username + "&userpad=" + userpad);
+        });
+        $("#homework").click(function() {
+
+            $("#homework").attr("href", "/student/homework?username=" + username + "&userpad=" + userpad);
+        });
+        $("#grade").click(function() {
+
+            $("#grade").attr("href", "/student/grade?username=" + username + "&userpad=" + userpad);
+        });
+        $("#evaluate").click(function() {
+
+            $("#evaluate").attr("href", "/student/evaluate?username=" + username + "&userpad=" + userpad);
+        });
+        $("#studycondition").click(function() {
+
+            $("#studycondition").attr("href", "/student/studycondition?username=" + username + "&userpad=" + userpad);
+        });
+    });
+</script>
+
+</html>

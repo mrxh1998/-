@@ -1,0 +1,56 @@
+.se {
+    width: 100%;
+    height: 50px;
+    margin-top: 150px;
+    line-height: 50px;
+    background-color: rgb(231, 167, 167);
+    text-align: center;
+}
+
+.se input {
+    height: 30px;
+}
+
+.main {
+    width: 60%;
+    height: 1000px;
+    margin-left: 20%;
+    background-color: rgba(203, 234, 230, 0.544);
+    list-style-type: none;
+}
+
+.main li {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    background-color: rgb(195 197 156 / 77%);
+    margin-top: 5px;
+}
+
+.main li div {
+    font-size: 20px;
+    color: rgb(220, 74, 74);
+    width: 70%;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.add {
+    position: absolute;
+    top: 5px;
+    right: 30px;
+    z-index: 100;
+    width: 60px;
+    height: 40px;
+    font-size: 15px;
+    background-color: #26d626b5;
+    color: antiquewhite;
+}
+
+.add:hover {
+    border: 2px solid red;
+}

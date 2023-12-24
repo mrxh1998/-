@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建课堂</title>
+    <link rel="stylesheet" th:href="@{css/index.css}">
+    <link rel="stylesheet" th:href="@{css/creat.css}">
+    <script th:src="@{js/jquery.min.js}"></script>
+    <!-- <script src="js/creat.js"></script> -->
+</head>
+
+<body>
+    <div class="header" th:replace="/index::header">
+        <a href="index.html" class="logo">
+            <h1>Logo</h1>
+        </a>
+        <nav class="navbar">
+            <ul>
+                <!-- <li><a class="first" href="#">首页</a></li> -->
+                <li><a class="next" href="index.html">回到首页</a></li>
+                <li><a class="next" href="../admin/login.html">退出登录</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="view">
+        <text>首页/创建班级（课堂）</text>
+    </div>
+
+    <div class="creatcontext">
+        <form method="post"  th:action="@{/createClass}">
+            <div class="sign-in-htm">
+                <div class="group">
+                    <label for="user" class="label">课程名</label>
+                    <input type="text" name="courseName">
+                </div>
+                <div class="group">
+                    <a th:href="@{/createClass}"><input style="background-color: aqua;height: 20px;width: 50px;margin-top: 20px;margin-left: 150px; border: 1px solid rgb(178, 118, 118);" type="submit" class="button" value="创建"></a>
+                </div>
+            </div>
+        </form>
+<!--        <form method="post" enctype="multipart/form-data" id="file_upload" onsubmit="return checks()" th:action="@{/createClass}">-->
+<!--            <span>课程名：</span>-->
+<!--            <input type="text" name="courseName">-->
+<!--&lt;!&ndash;            <h3 style="margin-top: 20px;">请选择封面</h3>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <p>封面预览：</p>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <div id="test-image-preview"></div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <p>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="file" id="test-image-file" name="test" accept="image/gif, image/jpeg, image/png, image/jpg">&ndash;&gt;-->
+<!--&lt;!&ndash;            </p>&ndash;&gt;-->
+<!--&lt;!&ndash;            <p id="test-file-info"></p>&ndash;&gt;-->
+<!--            <input style="background-color: aqua;height: 20px;width: 50px;margin-top: 20px;margin-left: 150px; border: 1px solid rgb(178, 118, 118);" type="submit" value="提交">-->
+<!--        </form>-->
+
+
+    </div>
+
+
+</body>
+<script>
+    var mark = false;
+    var fileInput = document.getElementById('test-image-file'),
+        info = document.getElementById('test-file-info'),
+        preview = document.getElementById('test-image-preview');
+    // 监听change事件:
+    fileInput.addEventListener('change', function() { // 清除背景图片:
+        preview.style.backgroundImage = '';
+        // 检查文件是否选择:
+        if (!fileInput.value) {
+            info.innerHTML = '没有选择文件';
+            return;
+        }
+        // 获取File引用:
+        var file = fileInput.files[0];
+        //判断文件大小
+        var size = file.size;
+        if (size >= 1 * 1024 * 1024) {
+            alert('文件大于1兆不行!');
+            return false;
+        }
+        // 获取File信息:
+        info.innerHTML = '文件: ' + file.name + '<br>' +
+            '大小: ' + file.size + '<br>' +
+            '修改: ' + file.lastModifiedDate;
+        if (file.type !== 'image/jpeg' && file.type !== 'image/png' && file.type !== 'image/gif') {
+            alert('不是有效的图片文件!');
+            return;
+        }
+        mark = true;
+
+        // 读取文件:
+        var reader = new FileReader();
+        reader.onload = function(e) {　　
+            var　　 data = e.target.result; // 'data:image/jpeg;base64,/9j/4AAQSk...(base64编码)...}'            
+            　　
+            preview.style.backgroundImage = 'url(' + data + ')';
+        };
+        // 以DataURL的形式读取文件:
+        reader.readAsDataURL(file);
+        console.log(file);
+
+    });
+
+    function checks() {
+        return mark;
+    }
+</script>
+
+
+</html>

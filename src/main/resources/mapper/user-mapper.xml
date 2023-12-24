@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ourProject.StudyAnalysis.dao.UserMapper">
+    <sql id="insertFields">
+        user_type,username,user_real_name,user_password,salt,phone_number,email,status
+    </sql>
+    <sql id="selectFields">
+        user_id,user_type,username,user_real_name,user_password,salt,phone_number,email,status
+    </sql>
+    <insert id="insertUser" parameterType="User">
+        insert into user (<include refid="insertFields"></include>)
+        values(#{userType},#{username},#{userRealName},#{userPassword},#{salt},#{phoneNumber},#{email},#{status})
+    </insert>
+    <select id="selectByUsername" resultType="User">
+        select <include refid="selectFields"></include> from user
+        where username = #{username}
+    </select>
+    <select id="selectById" resultType="User">
+        select <include refid="selectFields"></include>
+        from user
+        where user_id = #{id}
+    </select>
+</mapper>

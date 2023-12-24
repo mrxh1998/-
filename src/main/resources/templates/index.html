@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生端学习分析系统</title>
+    <link rel="stylesheet" th:href="@{css/index.css}">
+    <link rel="stylesheet" th:href="@{css/swiper.min.css}">
+    <script th:src="@{js/swiper.min.js}"></script>
+    <script th:src="@{js/index.js}"></script>
+</head>
+
+<body>
+    <div class="header" th:fragment="header">
+        <a th:href="@{/index}" class="logo">
+            <h1>Logo</h1>
+        </a>
+        <form th:action="@{/searchClass}" class="parent" method="post">
+            <input type="text" name="className">
+            <input type="submit"  class="button" value="搜索课堂">
+        </form>
+        <text class="theme">学习分析系统</text>
+        <nav class="navbar">
+            <ul>
+                <li><a class="first" th:href="@{/index}">首页</a></li>
+
+                <li><a class="next" th:href="@{/Classes}" th:if="${loginUser!=null}">我的课堂</a>
+                <li><a class="next" th:href="@{/createClass}" th:if="${loginUser!=null && loginUser.userType == 2}">创建课堂</a>
+                </li>
+                <li><a class="next" th:href="@{/userDetail}" th:if="${loginUser!=null}">个人信息</a></li>
+                <li><a class="next" th:href="@{/logout}" th:if="${loginUser!=null}">退出登录</a></li>
+                <li><a class="next" th:href="@{/login}" th:if="${loginUser==null}">学生登录</a></li>
+                <li><a class="next" th:href="@{/tlogin}" th:if="${loginUser==null}">教师登录</a></li>
+                <li><a class="next" th:href="@{/login}" th:if="${loginUser==null}">注册</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="top">123</div>
+
+    <!-- 注释Swiper  -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img th:src="@{img/bg1.jpg}" alt="">
+            </div>
+            <div class="swiper-slide">
+
+                <img th:src="@{img/bg2.jpg}" alt="">
+            </div>
+            <div class="swiper-slide">
+
+                <img th:src="@{img/bg3.jpg}" alt="">
+            </div>
+            <div class="swiper-slide">
+
+                <img th:src="@{img/max.jpg}" alt="">
+            </div>
+
+        </div>
+        <!-- 注释Add Pagination  -->
+        <div class="swiper-pagination"></div>
+        <!-- 注释Add Arrows -->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+
+
+
+
+    <div class="bottom">
+
+        <p class="introduce">系统介绍</p>
+        <div class="left">left</div>
+        <div class="right">
+            <img class="one" th:src="@{img/02.jpg}" alt="">
+            <img class="two" th:src="@{img/02.jpg}" alt="">
+        </div>
+    </div>
+
+
+
+
+</body>
+
+</html>

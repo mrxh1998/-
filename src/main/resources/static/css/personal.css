@@ -1,0 +1,178 @@
+/* 主题内容 */
+
+.pcontext {
+    width: 100%;
+    height: 600px;
+    background-color: rgba(195, 216, 221, 0.766);
+    position: relative;
+}
+
+.one {
+    float: left;
+    height: 400px;
+    width: 25%;
+    background-color: rgb(228, 243, 243);
+    box-shadow: 10px 10px 5px #888888;
+    margin-top: 100px;
+    margin-left: 6%;
+}
+
+.one .info1 {
+    height: 200px;
+    width: 100%;
+    background-color: white;
+}
+
+.one .info1 img {
+    float: left;
+}
+
+.one .info1 ul {
+    float: left;
+    margin: 30px 50px;
+}
+
+.one .info1 ul li {
+    margin-top: 20px;
+}
+
+.one .info1 ul .name {
+    font-weight: bolder;
+    font-size: 25px;
+}
+
+.one .info1 ul .num {
+    font-size: 15px;
+}
+
+.one .info1 ul .email {
+    font-size: 15px;
+}
+
+.one .info2 {
+    line-height: 200px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bolder;
+    color: rgb(242, 182, 108);
+}
+
+.two {
+    float: left;
+    height: 400px;
+    width: 25%;
+    background-color: rgb(217, 220, 220);
+    box-shadow: 10px 10px 5px #888888;
+    margin-top: 100px;
+    margin-left: 6%;
+}
+
+.two .titles {
+    width: 100%;
+    height: 70px;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 20px;
+    background-color: rgb(119 232 222 / 62%);
+}
+
+.two ul {
+    list-style-type: none;
+    width: 100%;
+    margin-top: 4px;
+    margin-top: 5px;
+}
+
+.two ul li {
+    width: 100%;
+    height: 40px;
+    background-color: white;
+    margin-top: 3px;
+    padding-left: 9px;
+    line-height: 40px;
+    font-size: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.two ul li a {
+    color: rgb(109, 163, 163);
+}
+
+.two ul li a:hover {
+    text-decoration: underline;
+}
+
+.three {
+    float: left;
+    height: 400px;
+    width: 25%;
+    background-color: rgb(169 168 236 / 52%);
+    box-shadow: 10px 10px 5px #888888;
+    margin-top: 100px;
+    margin-left: 6%;
+}
+
+.three .titles {
+    width: 100%;
+    height: 70px;
+    text-align: center;
+    padding-top: 20px;
+    font-size: 20px;
+    background-color: rgb(236 62 62 / 35%);
+}
+
+.three ul {
+    list-style-type: none;
+    width: 100%;
+    margin-top: 4px;
+    margin-top: 5px;
+}
+
+.three ul li {
+    width: 100%;
+    height: 40px;
+    background-color: #dad16bd6;
+    margin-top: 3px;
+    padding-left: 9px;
+    line-height: 40px;
+    font-size: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.three ul li a {
+    color: rgb(109, 163, 163);
+}
+
+.three ul li a:hover {
+    text-decoration: underline;
+}
+
+.btn1 {
+    height: 60px;
+    width: 200px;
+    margin-top: 50px;
+    margin-left: 30%;
+    background-color: #f3b9b9;
+    font-size: 20px;
+}
+
+.btn1:hover {
+    box-shadow: 5px 5px 4px #888888;
+}
+
+.btn2 {
+    height: 60px;
+    width: 200px;
+    margin-top: 50px;
+    margin-left: 18%;
+    background-color: #f3b9b9;
+    font-size: 20px;
+}
+
+.btn2:hover {
+    box-shadow: 5px 5px 4px #888888;
+}

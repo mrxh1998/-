@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>班级学习情况</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/courseindex.css}">
+    <link rel="stylesheet" th:href="@{/css/studycase.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/studyCase.js}"></script>
+    <script th:src="@{/js/echarts.min.js}"></script>
+</head>
+
+<body>
+    <div class="header" th:replace="/index::header">
+        <a href="index.html" class="logo">
+            <h1>Logo</h1>
+        </a>
+        <nav class="navbar">
+            <ul>
+                <!-- <li><a class="first" href="#">首页</a></li> -->
+                <li><a class="next" href="mycourse.html">回到我的课堂</a></li>
+                <li><a class="next" href="index.html">回到首页</a></li>
+
+                <li><a class="next" href="../admin/login.html">退出登录</a></li>
+
+            </ul>
+        </nav>
+    </div>
+    <div class="view">
+        <text>首页/我的课堂/课堂首页</text>
+    </div>
+
+    <div class="top" th:replace="/courseindex::top">
+        <center>
+            <ul>
+                <li><a href="#"><b>主页</b></a></li>
+                <li><a href="#" id="messages">通知</a></li>
+                <li><a href="#" id="homework">作业</a></li>
+                <li><a href="#" id="grade">成绩</a></li>
+                <li><a href="#" id="evaluate">评价</a></li>
+                <li><a class="active" href="#" id="studycondition">班级学习情况</a></li>
+                <li><a href="#" id="sign">学业预警</a></li>
+            </ul>
+        </center>
+    </div>
+
+
+    <div class="casemain">
+        <h4>班级总人数：<a th:text="${studentNumber}"></a></h4>
+        <ul th:each="map:${studentList}">
+            <li>
+                <text th:text="${map.student.userRealName}">姓名</text>
+                <text >学习时长:    <a th:text="${map.studyTime}"></a> <a>分钟</a></text>
+                <text><input class="warning" type="button" value="发送预警"></text>
+                <text><a  th:href="@{|/studentStudyCase/${map.student.userId}/${class.id}|}" th:text="查看学习详情"></a></text>
+                <div hidden="hidden" id="classId" th:text="${class.id}"></div>
+                <div hidden="hidden" id="studentId" th:text="${map.student.userId}"></div>
+            </li>
+        </ul>
+
+
+    </div>
+
+</body>
+
+
+</html>

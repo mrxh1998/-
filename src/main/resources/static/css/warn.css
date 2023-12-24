@@ -1,0 +1,61 @@
+.warnmain {
+    width: 80%;
+    height: 1000px;
+    margin-top: 40px;
+    margin-left: 10%;
+    background-color: #c0d0d070;
+}
+
+.warnmain ul {
+    list-style-type: none;
+    width: 100%;
+}
+
+.warnmain ul li {
+    width: 100%;
+    height: 50px;
+    margin-top: 5px;
+    background-color: rgb(189, 196, 196);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.warnmain ul li a {
+    margin-left: 20px;
+    font-size: 18px;
+    line-height: 50px;
+    text-decoration: none;
+    color: rgb(185, 54, 56)
+}
+
+.warnmain ul li a:hover {
+    text-decoration: underline;
+}
+
+.putout {
+    float: left;
+    margin-top: 40px;
+    margin-left: 50px;
+}
+
+.putout textarea {
+    background-color: #93c5b594;
+    border: 1px solid black;
+}
+
+.putout .btn {
+    width: 70px;
+    height: 30px;
+    background-color: #e0ce9c73;
+    border: 1px solid rgb(54, 40, 40);
+    margin-left: 10px;
+}
+
+.putout input:hover {
+    background-color: rgba(103, 219, 219, 0.816);
+}
+
+.putout .txt {
+    border: 1px solid rgb(33, 50, 61);
+}

@@ -1,0 +1,31 @@
+.ccontext {
+    width: 100%;
+    height: 1000px;
+    background-color: rgba(195, 216, 221, 0.766);
+    position: relative;
+}
+
+.min {
+    float: left;
+    height: 320px;
+    width: 250px;
+    margin: 25px 30px;
+    background-color: #e6f1f3;
+}
+
+.min:hover {
+    box-shadow: 6px 6px 4px rgb(151, 206, 173);
+}
+
+.min img {
+    width: 250px;
+    height: 250px;
+}
+
+.min p {
+    text-align: center;
+    font-weight: bolder;
+    color: rgb(15 128 140);
+    font-size: 15px;
+    margin-top: 5px;
+}

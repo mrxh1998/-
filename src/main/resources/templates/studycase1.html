@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>班级学习情况</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/courseindex.css}">
+    <link rel="stylesheet" th:href="@{/css/studycase.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/studyCase.js}"></script>
+    <script th:src="@{/js/echarts.min.js}"></script>
+</head>
+
+<body>
+<div class="header" th:replace="/index::header">
+    <a href="index.html" class="logo">
+        <h1>Logo</h1>
+    </a>
+    <nav class="navbar">
+        <ul>
+            <!-- <li><a class="first" href="#">首页</a></li> -->
+            <li><a class="next" href="mycourse.html">回到我的课堂</a></li>
+            <li><a class="next" href="index.html">回到首页</a></li>
+
+            <li><a class="next" href="../admin/login.html">退出登录</a></li>
+
+        </ul>
+    </nav>
+</div>
+<div class="view">
+    <text>首页/我的课堂/课堂首页</text>
+</div>
+
+<div class="top" th:replace="/courseindex::top">
+    <center>
+        <ul>
+            <li><a href="#"><b>主页</b></a></li>
+            <li><a href="#" id="messages">通知</a></li>
+            <li><a href="#" id="homework">作业</a></li>
+            <li><a href="#" id="grade">成绩</a></li>
+            <li><a href="#" id="evaluate">评价</a></li>
+            <li><a class="active" href="#" id="studycondition">班级学习情况</a></li>
+            <li><a href="#" id="sign">学业预警</a></li>
+        </ul>
+    </center>
+</div>
+
+
+<div class="casemain">
+    <h4>总学习时长<a th:text="${allStudyTime}"></a></h4>
+    <ul>
+        <li>
+            <div class="box" style="width: 98%;height:400px;margin-top: 30px;background-color: aliceblue;"></div>
+        </li>
+    </ul>
+
+
+</div>
+
+</body>
+
+
+<script th:inline="javascript">
+		var info={
+			dayList:[
+				[# th:each="day : ${dayList}"]
+				   [[${day}]],
+				[/]
+			],
+			studyTimeList:[
+				[# th:each="time : ${studyTimeList}"]
+				   [[${time}]],
+				[/]
+			]
+		}
+		console.log(info.dayList);
+		console.log(info.studyTimeList);
+    //3.初始化实例对象 echarts.init(dom容器)
+    var myChart = echarts.init(document.querySelector(".box"));
+    var data1 = info.studyTimeList;
+    //4.指定配置项和数据
+
+
+    var option = {
+        title: {
+            text: '本月每日学习时间(分钟)'
+        },
+        tooltip: {},
+        xAxis: {
+            type: 'category',
+            data: info.dayList
+        },
+        yAxis: {
+            type: 'value'
+        },
+        series: [{
+            data: data1,
+            type: 'line'
+        }]
+    };
+    //5.将配置项设置给echarts实例对象，使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+
+
+</html>

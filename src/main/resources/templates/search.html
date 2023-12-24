@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<!--搜索结果页面-->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>搜索结果</title>
+    <link rel="stylesheet" th:href="@{css/index.css}">
+    <link rel="stylesheet" th:href="@{css/search.css}">
+    <script th:src="@{js/jquery.min.js}"></script>
+    <script th:src="@{js/search.js}"></script>
+</head>
+
+<body>
+    <div class="header" th:replace="/index::header">
+        <a href="index.html" class="logo">
+            <h1>Logo</h1>
+        </a>
+        <nav class="navbar">
+            <ul>
+                <!-- <li><a class="first" href="#">首页</a></li> -->
+                <li><a class="next" href="index.html">回到首页</a></li>
+
+                <li><a class="next" href="../admin/login.html">退出登录</a></li>
+
+            </ul>
+        </nav>
+    </div>
+    <div class="view">
+        <text>首页/搜索班级（课堂）</text>
+    </div>
+
+
+    <div class="scontext">
+        <h6>搜索结果：</h6>
+        <ul class="main">
+            <li  th:each="map:${classList}">
+                <div>课程名：<a th:text="${map.class.className}">面向对象软件工程</a>，授课教师：
+                    <b th:text="${map.teacher.userRealName}">叶老师</b>    班级号：<b th:text="${map.class.id}" id="classId">1001</b>
+                </div>
+                <input class="add" type="button" value="加入" th:if="${!map.isMember}">
+            </li>
+        </ul>
+    </div>
+
+</body>
+<script>
+</script>
+
+
+</html>

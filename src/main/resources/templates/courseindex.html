@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--所有课堂-->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人信息</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <link rel="stylesheet" th:href="@{/css/courseindex.css}">
+</head>
+<!--详细课堂界面-->
+<body>
+    <div class="header" th:replace="/index::header">
+        <a href="index.html" class="logo">
+            <h1>Logo</h1>
+        </a>
+        <nav class="navbar">
+            <ul>
+                <!-- <li><a class="first" href="#">首页</a></li> -->
+                <li><a class="next" href="mycourse.html">回到我的课堂</a></li>
+                <li><a class="next" href="index.html">回到首页</a></li>
+
+                <li><a class="next" href="../admin/login.html">退出登录</a></li>
+
+            </ul>
+        </nav>
+    </div>
+    <div class="view">
+        <text>首页/我的课堂/课堂首页</text>
+    </div>
+    <div class="top" th:fragment="top">
+        <center>
+            <ul>
+                <li><a th:href="@{|/classIndex/${class.id}|}"><b>主页</b></a></li>
+                <li><a th:href="@{|/inform/${class.id}|}">通知</a></li>
+                <li><a th:href="@{|/upload/${class.id}|}" th:if="${loginUser!=null && loginUser.userType == 2}">上传学习资源</a></li>
+                <li><a th:href="@{|/studyCase/${class.id}|}" th:if="${loginUser!=null && loginUser.userType == 2}">班级学习情况</a></li>
+                <li><a th:href="@{|/studentStudyCase/${loginUser.userId}/${class.id}|}" th:if="${loginUser!=null && loginUser.userType == 1}">我的学习情况</a></li>
+
+            </ul>
+        </center>
+    </div>
+
+
+
+    <div class="cmain">
+        <p class="tit" th:text="${class.className}">课程名称：面向对象软件工程</p>
+        <img th:src="@{/img/c1.jpg}" alt="">
+        <div>主讲教师：</div>
+        <div class="tname" th:text="${teacher.userRealName}">叶老师</div>
+        <div>课程简介：</div>
+        <div class="introduce">暂无</div>
+        <h3>教学资料</h3>
+        <ul th:each="map:${fileList}">
+            <li><a th:href="@{|/study/${class.id}/${map.filename}.mp4|}" th:text="${map.filename}">01.演示视频</a></li>
+        </ul>
+
+    </div>
+
+</body>
+
+</html>

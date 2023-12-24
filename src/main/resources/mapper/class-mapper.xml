@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ourProject.StudyAnalysis.dao.ClassMapper">
+    <sql id="insertFields">
+        class_name,teacher_id
+    </sql>
+    <sql id="selectFields">
+        id,class_name,teacher_id
+    </sql>
+    <select id="selectById" resultType="Class">
+        select <include refid="selectFields"></include>
+        from class
+        where id = #{classId}
+    </select>
+    <select id="selectByName" resultType="Class">
+        select <include refid="selectFields"></include>
+        from class
+        where class_name = #{className}
+    </select>
+    <insert id="insertClass" parameterType="Class">
+        insert into class(<include refid="insertFields"></include>)
+        values(#{className},#{teacherId})
+    </insert>
+    <select id="selectByTeacherId" resultType="Class">
+        select <include refid="selectFields"></include>
+        from class
+        where teacher_id = #{teacherId}
+        limit #{offset},#{limit}
+    </select>
+</mapper>
